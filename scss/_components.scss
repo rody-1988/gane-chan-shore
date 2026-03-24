@@ -1,0 +1,85 @@
+@use "variables" as *;
+
+.glass-card {
+  background: rgb(255 255 255 / 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgb(255 255 255 / 0.3);
+}
+
+.result-card {
+  width: 100%;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: $shadow-card;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.result-card__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  transition: background 1s ease;
+  pointer-events: none;
+}
+
+.result-card__label {
+  position: relative;
+  z-index: 10;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: $color-stone-400;
+}
+
+.result-card__title {
+  position: relative;
+  z-index: 10;
+  margin: 1rem 0 0;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: transparent;
+  background: $gradient-title;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.result-card__message {
+  position: relative;
+  z-index: 10;
+  margin: 2rem 0 0;
+  font-size: 1rem;
+  line-height: 1.625;
+  font-weight: 500;
+  color: $color-gane-dark;
+}
+
+.btn-draw {
+  width: 100%;
+  max-width: 20rem;
+  border: none;
+  border-radius: 9999px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background: $gradient-button;
+  box-shadow: $shadow-button;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: $shadow-button-hover;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
