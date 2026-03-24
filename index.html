@@ -1,127 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ガネーちゃんのおみくじ☕️</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              // ガネーちゃん専用カラー：スモーキーパステル
-              'morning-glow': '#FFD194', // 朝焼けのオレンジ
-              'sky-blue': '#D4FC79',     // 爽やかな緑
-              'dusty-pink': '#E2B0B0',   // スモーキーなピンク
-              'gane-dark': '#4A423F',    // 優しい墨色
-            },
-          },
-        },
-      };
-    </script>
-    <style>
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-10px); }
-      }
-      .animate-float { animation: float 3s ease-in-out infinite; }
-      
-      .glass-card {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-      }
-    </style>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body class="min-h-screen bg-gradient-to-br from-[#fdfcfb] via-[#e2d1c3] to-[#f5f7fa] text-gane-dark antialiased">
-    <div class="mx-auto flex min-h-screen max-w-lg flex-col px-6 py-12">
-      
-      <header class="mb-12 text-center">
-        <div class="inline-block animate-float text-4xl mb-4">☕️</div>
-        <h1 class="text-2xl font-bold tracking-widest text-gane-dark">今日を整える一杯</h1>
-        <p class="mt-2 text-xs tracking-widest text-stone-500 uppercase">Gane-chan's Fortune</p>
+  <body>
+    <div class="page">
+      <header class="page__header">
+        <div class="page__header-emoji animate-float">☕️</div>
+        <h1 class="page__title">今日を整える一杯</h1>
+        <p class="page__subtitle">Gane-chan's Fortune</p>
       </header>
 
-      <main class="flex flex-1 flex-col items-center justify-start gap-10">
-        <div id="result-card" class="glass-card w-full rounded-3xl p-10 text-center shadow-xl transition-all duration-500 overflow-hidden relative">
-          <div id="result-glow" class="absolute inset-0 opacity-20 transition-all duration-1000"></div>
-          
-          <p class="relative z-10 text-xs font-bold tracking-widest text-stone-400">TODAY'S MESSAGE</p>
-          <div id="result-title" class="relative z-10 mt-4 text-4xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">
-            —
-          </div>
-          <p id="result-message" class="relative z-10 mt-8 text-base leading-relaxed text-gane-dark font-medium">
-            リラックスして、<br>ボタンをタップしてみてね。
+      <main class="main">
+        <div id="result-card" class="glass-card result-card">
+          <div id="result-glow" class="result-card__glow"></div>
+
+          <p class="result-card__label">TODAY'S MESSAGE</p>
+          <div id="result-title" class="result-card__title">—</div>
+          <p id="result-message" class="result-card__message">
+            リラックスして、<br />ボタンをタップしてみてね。
           </p>
         </div>
 
-        <button id="draw-btn" class="w-full max-w-xs rounded-full bg-gradient-to-r from-[#f6d365] to-[#fda085] py-4 text-white font-bold shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300">
-          運勢を淹れる
-        </button>
+        <button id="draw-btn" type="button" class="btn-draw">運勢を淹れる</button>
       </main>
 
-      <footer class="mt-12 text-center text-[10px] text-stone-400 tracking-widest">
-        &copy; Gane-chan Creative & Fortune
-      </footer>
+      <footer class="page__footer">&copy; Gane-chan Creative & Fortune</footer>
     </div>
 
-    <script>
-      // 20個のポジティブメッセージを実装！
-      const FORTUNES = [
-        { title: "大吉", message: "今日は自分を一番のゲストとして扱って。とっておきのティータイムを。☕️", weight: 3 },
-        { title: "大吉", message: "深呼吸をひとつ。今のあなたは、それだけで十分素晴らしいんだよ。☀︎", weight: 3 },
-        { title: "中吉", message: "直感を信じてみて。ふと思いついたことが、幸運の扉を開くカギになる。✨", weight: 5 },
-        { title: "小吉", message: "今日は『NO』と言ってもいい日。自分の心地よさを最優先に。🌿", weight: 5 },
-        { title: "吉",   message: "小さな変化を楽しもう。いつもと違う道を通るだけで発見があるよ。🚶‍♂️", weight: 8 },
-        { title: "中吉", message: "今の悩みは、大きな幸せに変わるための準備運動。焦らなくて大丈夫。🌱", weight: 5 },
-        { title: "大吉", message: "鏡を見てニッコリしてみて。その笑顔が、今日一番のラッキーアイテム！😊", weight: 3 },
-        { title: "小吉", message: "完璧じゃなくていい。60点くらいの自分を『よくやってる！』と褒めよう。👏", weight: 8 },
-        { title: "中吉", message: "深い緑色が今日の守護色。落ち着いた気持ちで過ごせば、運気が安定するよ。🌲", weight: 5 },
-        { title: "吉",   message: "懐かしい友人に連絡してみる？心温まるニュースが舞い込む予感。📞", weight: 8 },
-        { title: "大吉", message: "今日は『受け取り上手』になろう。褒め言葉は遠慮せず『ありがとう』で。💎", weight: 3 },
-        { title: "末吉", message: "空を見上げてみて。広い世界を感じることで、悩みもふっと軽くなるはず。☁️", weight: 10 },
-        { title: "中吉", message: "自分に小さなプレゼントを。欲しかったお菓子、お気に入りの入浴剤。🎁", weight: 5 },
-        { title: "吉",   message: "今は力を蓄えるとき。ゆっくり休むことが明日の魔法になる。🌙", weight: 8 },
-        { title: "小吉", message: "あなたの言葉には力がある。今日は自分にも他人にも、優しい言葉を選んで。🗣️", weight: 8 },
-        { title: "中吉", message: "整理整頓がツキを呼ぶよ。デスクの一角を片付けるだけで心にゆとりが。🧹", weight: 5 },
-        { title: "末吉", message: "失敗は、新しい道を見つけるためのヒント。次はもっとうまくいくから大丈夫。💪", weight: 10 },
-        { title: "大吉", message: "太陽の光を浴びてみて。朝焼けのエネルギーが、運気を底上げしてくれる。🌅", weight: 3 },
-        { title: "吉",   message: "『なんとかなる』が今日の合言葉。肩の力を抜けば、運勢は回り出す。🎡", weight: 10 },
-        { title: "大吉", message: "あなたは一人じゃない。僕が、そして占いの魔法が、いつでも味方しているよ。☀︎", weight: 3 }
-      ];
-
-      function pickWeighted(list) {
-        const total = list.reduce((s, item) => s + item.weight, 0);
-        let r = Math.random() * total;
-        for (const item of list) {
-          r -= item.weight;
-          if (r <= 0) return item;
-        }
-        return list[list.length - 1];
-      }
-
-      const card = document.getElementById("result-card");
-      const glow = document.getElementById("result-glow");
-      const titleEl = document.getElementById("result-title");
-      const messageEl = document.getElementById("result-message");
-      const btn = document.getElementById("draw-btn");
-
-      btn.addEventListener("click", () => {
-        // 演出：一旦カードを少し小さくして期待感を出す
-        card.style.transform = "scale(0.95)";
-        
-        setTimeout(() => {
-          const picked = pickWeighted(FORTUNES);
-          titleEl.textContent = picked.title;
-          messageEl.textContent = picked.message;
-          
-          // 演出：結果に合わせて背景の光（Glow）を変える
-          glow.style.background = `radial-gradient(circle, ${picked.title === '大吉' ? '#ffd194' : '#e2d1c3'} 0%, transparent 70%)`;
-          
-          card.style.transform = "scale(1)";
-        }, 150);
-      });
-    </script>
+    <script src="js/main.js" defer></script>
   </body>
 </html>
