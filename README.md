@@ -13,7 +13,8 @@
 | `js/main.js` | おみくじのメッセージ一覧と抽選の動き |
 | `scss/` | **見た目をここで編集**（Sass / SCSS） |
 | `scss/main.scss` | 他の SCSS をまとめて読み込むファイル |
-| `css/style.css` | ブラウザが読む **最終の CSS**（Live Sass Compiler が自動で作る） |
+| `css/style.css` | ブラウザが読む **最終の CSS**（Live Sass Compiler が自動で作る）※GitHub にも必ず push |
+| `.nojekyll` | GitHub Pages で Jekyll を無効にし、静的ファイルをそのまま配信しやすくする |
 
 **大まかな流れ**
 
@@ -218,9 +219,55 @@ $color-gane-dark: #4a423f;
 | おみくじが増えない | `js/main.js` の `FORTUNES` のカンマ・`{` `}` の対応が正しいか？ |
 | ページが真っ白に近い | `index.html` の CSS のパスが `css/style.css` になっているか？ |
 | ボタンで何も起きない | `js/main.js` の `id`（`draw-btn` など）と HTML の `id` が一致しているか？ |
+| **Go Live では見えるのに GitHub Pages だけおかしい** | 下の「## 8. GitHub Pages」に沿って確認 |
 
 ---
 
-## 8. ライセンス・クレジット
+## 8. GitHub Pages で CSS が効かないとき
+
+GitHub 上のサイトだけスタイルが当たらない場合、次を順に見てください。
+
+### 8.1 `css/style.css` を Git に含めているか
+
+GitHub は **SCSS を CSS に変換しません。** 公開されるのは **リポジトリに push されたファイルだけ**です。
+
+1. PC で Live Sass Compiler を動かして `css/style.css` が生成されているか確認  
+2. その **`css/style.css` をコミットして push** しているか確認（GitHub のウェブで `css/style.css` が見える状態にする）
+
+`scss/` だけ push して `css/` が無いと、本番では CSS が読めず「素の HTML」に見えます。
+
+### 8.2 `.nojekyll` について
+
+リポジトリのルートに **`.nojekyll`**（中身が空でよいファイル）を置いてあります。  
+これで GitHub Pages 側の **Jekyll 処理がオフ**になり、`css/` や `js/` がそのまま静的ファイルとして配信されやすくなります。
+
+### 8.3 Pages の「どのフォルダを公開するか」
+
+リポジトリの **Settings → Pages → Build and deployment** で、**ブランチとフォルダ**（例: **`/ (root)`** か **`/docs`**）を選びます。
+
+- **`/ (root)`** にしているなら、**リポジトリの一番上**に `index.html` と `css/`・`js/` がある必要があります  
+- **`/docs`** にしているなら、**`docs/` の中**に `index.html` と `css/`・`js/` を置く必要があります（ルートだけだと Pages には出ません）
+
+### 8.4 プロジェクトサイトの URL とパス
+
+通常、リポジトリ名が `my-site` なら公開 URL は次の形です。
+
+`https://（ユーザー名）.github.io/my-site/`
+
+`index.html` では `css/style.css` のように **相対パス**にしているので、**ページの URL が `.../my-site/` で終わっている**と、CSS は `.../my-site/css/style.css` を読みに行きます。
+
+ブラウザで **F12 → ネットワーク（Network）** を開き、**`style.css` が 404 になっていないか**見てください。
+
+- **`https://ユーザー名.github.io/css/style.css`** のように **`リポジトリ名が抜けている**URLを読んでいたら**、どこかでベース URL がずれています。アドレスバーの URL を **`.../リポジトリ名/`**（末尾スラッシュ付き）で開き直して試してください。
+
+### 8.5 大文字・小文字
+
+GitHub のサーバー（Linux）は **フォルダ名の大文字・小文字を区別**します。  
+PC（Windows）では `CSS` と `css` が同じ扱いでも、GitHub 上では別のパスになり得ます。  
+フォルダは **`css`（小文字）** のままにそろえてください。
+
+---
+
+## 9. ライセンス・クレジット
 
 このプロジェクトの利用・改変は自由です。フッターの表示は必要に応じて `index.html` で変更してください。
