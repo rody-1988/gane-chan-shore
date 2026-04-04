@@ -1,18 +1,15 @@
-@use "variables" as *;
+@use "../foundation/variables" as *;
 
-.glass-card {
-  background: rgb(255 255 255 / 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgb(255 255 255 / 0.3);
-}
-
-.result-card {
+.omikuji-card {
+  /* components/_glass.scss で定義した glass-card を継承 */
   width: 100%;
   border-radius: 1.5rem;
   padding: 2.5rem;
   text-align: center;
   box-shadow: $shadow-card;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
   overflow: hidden;
   position: relative;
 
@@ -57,29 +54,6 @@
     line-height: 1.625;
     font-weight: 500;
     color: $color-gane-dark;
-  }
-}
-
-.btn-draw {
-  width: 100%;
-  max-width: 20rem;
-  border: none;
-  border-radius: 9999px;
-  padding: 1rem 1.5rem;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #fff;
-  background: $gradient-button;
-  box-shadow: $shadow-button;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    box-shadow: $shadow-button-hover;
-    transform: scale(1.05);
-  }
-
-  &:active {
-    transform: scale(0.95);
+    white-space: pre-wrap;// これを追加！「改行や空白をそのまま表示して」という命令
   }
 }

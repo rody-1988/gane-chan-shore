@@ -7,14 +7,22 @@
 
 ## 1. フォルダの中身（全体の流れ）
 
-| ファイル / フォルダ | 役割 |
-|---------------------|------|
-| `index.html` | ページの骨組み（見出し・本文・ボタンなど） |
-| `js/main.js` | おみくじのメッセージ一覧と抽選の動き |
-| `scss/` | **見た目をここで編集**（Sass / SCSS） |
-| `scss/main.scss` | 他の SCSS をまとめて読み込むファイル |
-| `css/style.css` | ブラウザが読む **最終の CSS**（Live Sass Compiler が自動で作る）※GitHub にも必ず push |
-| `.nojekyll` | GitHub Pages で Jekyll を無効にし、静的ファイルをそのまま配信しやすくする |
+src/scss/
+├── foundation/
+│   ├── _variables.scss  (色・フォント・サイズ変数)
+│   ├── _reset.scss      (ブラウザ差異を消す)
+│   └── _base.scss       (body, 共通レイアウト)
+├── components/
+│   ├── _glass.scss      (グラスモーフィズム共通設定)
+│   ├── _buttons.scss    (共通ボタン)
+│   └── _animations.scss (浮遊アニメーション等)
+├── layouts/
+│   ├── _header.scss     (ヘッダー)
+│   ├── _footer.scss     (フッター)
+│   └── _section.scss    (共通の余白設定など)
+├── pages/
+│   └── _omikuji-hero.scss (今回のおみくじメイン部分)
+└── main.scss            (これら全てを @use で読み込む)
 
 **大まかな流れ**
 

@@ -1,0 +1,248 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3, #f5f7fa);
+  color: #4a423f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.page {
+  margin: 0 auto;
+  display: flex;
+  min-height: 100vh;
+  max-width: 32rem;
+  flex-direction: column;
+  padding: 3rem 1.5rem;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2.5rem;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-draw {
+  width: 100%;
+  max-width: 20rem;
+  border: none;
+  border-radius: 9999px;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(to right, #f6d365, #fda085);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-draw:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
+}
+.btn-draw:active {
+  transform: scale(0.95);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.page__header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.page__header-emoji {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.page__title {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #4a423f;
+}
+
+.page__subtitle {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.1em;
+  color: #78716c;
+  text-transform: uppercase;
+}
+
+.page__footer {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.page__footer-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.page__footer-links li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  font-size: 13px;
+  color: #78716c;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.page__footer-links li a:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #4a423f;
+}
+.page__footer-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+.page__footer-line-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #78716c;
+}
+.page__footer-line-link img {
+  width: 138px;
+  height: auto;
+  transition: opacity 0.3s;
+}
+.page__footer-line-link img:hover {
+  opacity: 0.8;
+}
+.page__footer-copyright {
+  font-size: 10px;
+  color: #a8a29e;
+}
+
+.section, .omikuji-hero {
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.omikuji-hero {
+  padding: 3rem 0;
+}
+
+.omikuji-card {
+  /* components/_glass.scss で定義した glass-card を継承 */
+  width: 100%;
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  overflow: hidden;
+  position: relative;
+}
+.omikuji-card__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  transition: background 1s ease;
+  pointer-events: none;
+}
+.omikuji-card__label {
+  position: relative;
+  z-index: 10;
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #a8a29e;
+}
+.omikuji-card__title {
+  position: relative;
+  z-index: 10;
+  margin: 1rem 0 0;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: transparent;
+  background: linear-gradient(to right, #fb923c, #ec4899);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.omikuji-card__message {
+  position: relative;
+  z-index: 10;
+  margin: 2rem 0 0;
+  font-size: 1rem;
+  line-height: 1.625;
+  font-weight: 500;
+  color: #4a423f;
+  white-space: pre-wrap;
+}/*# sourceMappingURL=main.css.map */

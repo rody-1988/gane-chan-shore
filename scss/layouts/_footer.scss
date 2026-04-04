@@ -1,0 +1,62 @@
+@use "../foundation/variables" as v;
+
+.page__footer {
+  // margin-top: 4rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+
+  // リンク集のレイアウト
+  &-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // スマホで2列
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px; // 押しやすい高さ
+      font-size: 13px;
+      color: v.$color-stone-500;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.8);
+        color: v.$color-gane-dark;
+      }
+    }
+  }
+
+  // 公式LINE（下の真ん中）
+  &-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    &-text {
+      font-size: 14px;
+      font-weight: bold;
+      color: v.$color-stone-500;
+    }
+
+    &-link img {
+      width: 138px; // 公式推奨のボタンサイズ感
+      height: auto;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &-copyright {
+    font-size: 10px;
+    color: v.$color-stone-400;
+  }
+}

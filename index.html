@@ -2,12 +2,12 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <!-- cspell:ignore Gane -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ガネーちゃんのおみくじ☕️</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
+    ï
     <div class="page">
       <header class="page__header">
         <div class="page__header-emoji animate-float">☕️</div>
@@ -16,41 +16,100 @@
       </header>
 
       <main class="main">
-        <div id="result-card" class="glass-card result-card">
-          <div id="result-glow" class="result-card__glow"></div>
+        <section id="omikuji-main" class="omikuji-hero">
+          <div id="result-card" class="glass-card omikuji-card">
+            <div id="result-glow" class="omikuji-card__glow"></div>
+            <p class="omikuji-card__label">TODAY'S MESSAGE</p>
+            <div id="result-title" class="omikuji-card__title">—</div>
+            <p id="result-message" class="omikuji-card__message">
+              リラックスして、<br />ボタンをタップしてみてね。
+            </p>
+          </div>
 
-          <p class="result-card__label">TODAY'S MESSAGE</p>
-          <div id="result-title" class="result-card__title">—</div>
-          <p id="result-message" class="result-card__message">
-            リラックスして、<br />ボタンをタップしてみてね。
-          </p>
-        </div>
+          <button
+            id="draw-btn"
+            type="button"
+            class="btn-draw omikuji-hero__btn"
+          >
+            運勢を淹れる
+          </button>
+        </section>
+      </main>
 
-        <button id="draw-btn" type="button" class="btn-draw">
-          運勢を淹れる
-        </button>
+      <footer class="page__footer">
+        <nav class="page__footer-nav">
+          <ul class="page__footer-links">
+            <li>
+              <a
+                href="https://coconala.com/services/4121661?ref=profile_top_service"
+                target="_blank"
+                rel="noopener"
+                >鑑定メニュー</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://note.com/sol_5wing"
+                target="_blank"
+                rel="noopener"
+                >note</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.instagram.com/gane_chan13/"
+                target="_blank"
+                rel="noopener"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.threads.net/@gane_chan13"
+                target="_blank"
+                rel="noopener"
+                >Threads</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://whowatch.tv/profile/w:gaji_"
+                target="_blank"
+                rel="noopener"
+                >Live配信</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.amazon.co.jp/hz/wishlist/ls/32VCC37OVI8OD?ref_=wl_share"
+                target="_blank"
+                rel="noopener"
+                >Wishlist 🎁</a
+              >
+            </li>
+          </ul>
+        </nav>
 
         <div class="page__footer-line">
-          <p class="page__footer-line-text">ガネーちゃんと話して見る</p>
-          <a class="page__footer-line-link" href="https://lin.ee/OqWRG8s"
-            ><img
+          <p class="page__footer-line-text">ガネーちゃんと話してみる</p>
+          <a
+            class="page__footer-line-link"
+            href="https://lin.ee/OqWRG8s"
+            target="_blank"
+            rel="noopener"
+          >
+            <img
               src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"
               alt="友だち追加"
-          /></a>
+            />
+          </a>
         </div>
-      </main>
-      <footer class="page__footer">
-        <ul>
-          <li><a href="http://"></a></li>
-          <li><a href="http://"></a></li>
-          <li><a href="http://"></a></li>
-          <li><a href="http://"></a></li>
-          <li><a href="http://"></a></li>
-        </ul>
-        <small> &copy; Gane-chan Creative & Fortune </small>
+
+        <div class="page__footer-copyright">
+          <small>&copy; Gane-chan Creative & Fortune</small>
+        </div>
       </footer>
     </div>
-
-    <script src="js/main.js" defer></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

@@ -1,0 +1,31 @@
+@use "../foundation/variables" as *;
+
+.page__header {
+  margin-bottom: 3rem;
+  text-align: center;
+
+  &-emoji {
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+.page__title {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: $color-gane-dark;
+}
+
+.page__subtitle {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0.1em;
+  color: $color-stone-500;
+  text-transform: uppercase;
+}

@@ -1,0 +1,17 @@
+// 1. 設定・土台（Foundation）
+@use "foundation/variables";
+@use "foundation/reset";
+@use "foundation/base";
+
+// 2. 共通パーツ（Components）
+@use "components/glass";
+@use "components/buttons";
+@use "components/animations";
+
+// 3. 枠組み（Layouts）
+@use "layouts/header";
+@use "layouts/footer";
+@use "layouts/section";
+
+// 4. 各ページ固有（Pages）
+@use "pages/omikuji-hero";
