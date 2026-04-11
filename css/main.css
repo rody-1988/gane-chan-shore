@@ -63,6 +63,11 @@ body {
   gap: 2.5rem;
 }
 
+section {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
 .glass-card {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
@@ -245,4 +250,39 @@ body {
   font-weight: 500;
   color: #4a423f;
   white-space: pre-line;
+}
+
+.concept__title {
+  font-size: 2.5rem;
+  color: #4a423f;
+  letter-spacing: 0.1em;
+  margin-bottom: 5rem;
+  text-align: center;
+  text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.1);
+}
+.concept__description {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #78716c;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+.concept__description-link {
+  color: rgb(255, 93, 93);
+  font-size: 1.5rem;
+  text-decoration-line: underline;
+}
+.concept__description-link:hover {
+  color: rgba(255, 93, 236, 0.7);
+  transition: all 0.3s ease;
+}
+.concept__description-span {
+  display: inline-block;
+  margin: 1.5rem 0;
+  font-size: 1.5rem;
+  color: rgb(128, 182, 240);
+  text-decoration-line: underline;
+  font-weight: 700;
+  letter-spacing: 0.1em;
 }/*# sourceMappingURL=main.css.map */

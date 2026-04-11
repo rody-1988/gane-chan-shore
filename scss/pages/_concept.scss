@@ -1,0 +1,39 @@
+@use "../foundation/variables" as *;
+
+.concept {
+  &__title {
+    font-size: 2.5rem;
+    color: $color-gane-dark;
+    letter-spacing: 0.1em;
+    margin-bottom: 5rem;
+    text-align: center;
+    text-shadow: 5px 5px 1px rgb(0 0 0 / 0.1);
+  }
+  &__description {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: $color-stone-500;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    &-link{
+      color: rgb(255, 93, 93);
+      font-size: 1.5rem;
+      text-decoration-line: underline; 
+      &:hover{
+        color: rgba(255, 93, 236, 0.7);
+        transition: all 0.3s ease;
+      }
+    }
+    &-span {
+      display: inline-block;
+      margin: 1.5rem 0;
+      font-size: 1.5rem;
+      color: rgb(128, 182, 240);
+      text-decoration-line: underline;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+  }
+
+}
