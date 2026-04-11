@@ -50,6 +50,7 @@
             id="draw-btn"
             type="button"
             class="btn-draw omikuji-hero__btn"
+            onclick="gtag('event', 'click_omikuji', {'event_category': 'omikuji'});"
           >
             運勢を淹れる
           </button>
@@ -87,30 +88,31 @@
                 href="https://coconala.com/services/4121661?ref=profile_top_service"
                 target="_blank"
                 rel="noopener"
-                >鑑定メニュー</a
-              >
+                onclick="gtag('event', 'click_coconala', {'event_category': 'menu'});"
+                >鑑定メニュー</a>
             </li>
             <li>
               <a
                 href="https://note.com/sol_5wing"
                 target="_blank"
                 rel="noopener"
-                >note</a
-              >
+                onclick="gtag('event', 'click_note', {'event_category': 'menu'});"
+              >note</a>
             </li>
             <li>
               <a
                 href="https://www.instagram.com/gane_chan13/"
                 target="_blank"
                 rel="noopener"
-                >Instagram</a
-              >
+                onclick="gtag('event', 'click_instagram', {'event_category': 'sns'});"
+                >Instagram</a>
             </li>
             <li>
               <a
                 href="https://www.threads.net/@gane_chan13"
                 target="_blank"
                 rel="noopener"
+                onclick="gtag('event', 'click_threads', {'event_category': 'sns'});"
                 >Threads</a
               >
             </li>
@@ -119,6 +121,7 @@
                 href="https://whowatch.tv/profile/w:gaji_"
                 target="_blank"
                 rel="noopener"
+                onclick="gtag('event', 'click_live', {'event_category': 'sns'});"
                 >Live配信</a
               >
             </li>
@@ -127,6 +130,7 @@
                 href="https://www.amazon.co.jp/hz/wishlist/ls/32VCC37OVI8OD?ref_=wl_share"
                 target="_blank"
                 rel="noopener"
+                onclick="gtag('event', 'click_amazon', {'event_category': 'support'});"
                 >Wishlist 🎁</a
               >
             </li>
@@ -140,6 +144,7 @@
             href="https://lin.ee/OqWRG8s"
             target="_blank"
             rel="noopener"
+            onclick="gtag('event', 'click_line', {'event_category': 'inquiry'});"
           >
             <img
               src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"
