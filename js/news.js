@@ -1,27 +1,29 @@
 (function () {
-  // すべての「Read more...」ボタンを取得
   const moreBtns = document.querySelectorAll(".js-news-more");
 
   moreBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // 1. クリックされたボタンの親要素（news__group）を探す
       const group = btn.closest(".news__group");
-      
-      // 2. そのグループ内にある 3件目以降のアイテムを取得
       const items = group.querySelectorAll(".news__item");
       
+      // 現在のボタンのテキストで「これから開くのか、閉じるのか」を決める
+      const isOpening = btn.textContent.trim() === "Read more...";
+
       items.forEach((item, index) => {
-        if (index >= 2) {
-          item.classList.toggle("is-hidden");
+        // 3件目（index 2）以降が対象
+        if (index >= 3) { 
+          if (isOpening) {
+            // 開くとき：is-hidden を外す
+            item.classList.remove("is-hidden");
+          } else {
+            // 閉じるとき：is-hidden をつける
+            item.classList.add("is-hidden");
+          }
         }
       });
 
-      // 3. ボタンのテキストを切り替え
-      if (btn.textContent === "Read more...") {
-        btn.textContent = "Close";
-      } else {
-        btn.textContent = "Read more...";
-      }
+      // ボタンの文字を切り替え
+      btn.textContent = isOpening ? "Close" : "Read more...";
     });
   });
 })();
