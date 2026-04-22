@@ -57,21 +57,32 @@
     white-space: pre-line; // これを追加！「改行や空白をそのまま表示して」という命令
   }
 
-  .omikuji-card__details {
+  &__details {
     margin-top: 1.5rem;
     padding-top: 1rem;
     border-top: 1px dashed rgba(255, 255, 255, 0.3); // メッセージとの区切り線
+    display: none;
 
     .result-meta {
       margin-bottom: 1.5rem;
       font-size: 1.1rem;
     }
+    .color-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
   }
 
   .share-area {
+    display: none;
     .share-label {
       font-size: 1.2rem;
+      font-weight: bold;
       margin-top: 0.8rem;
+      margin: 20px 0;
       opacity: 0.8;
     }
 

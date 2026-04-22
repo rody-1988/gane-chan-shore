@@ -251,18 +251,31 @@ section {
   color: #4a423f;
   white-space: pre-line;
 }
-.omikuji-card .omikuji-card__details {
+.omikuji-card__details {
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px dashed rgba(255, 255, 255, 0.3);
+  display: none;
 }
-.omikuji-card .omikuji-card__details .result-meta {
+.omikuji-card__details .result-meta {
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }
+.omikuji-card__details .color-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+.omikuji-card .share-area {
+  display: none;
+}
 .omikuji-card .share-area .share-label {
   font-size: 1.2rem;
+  font-weight: bold;
   margin-top: 0.8rem;
+  margin: 20px 0;
   opacity: 0.8;
 }
 .omikuji-card .share-area .share-btns-container {
