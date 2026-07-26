@@ -603,6 +603,274 @@ h2 {
   }
 }
 /* ==========================
+占いメニュー全体
+========================== */
+.fortune-menu {
+  width: 100%;
+}
+.fortune-menu__inner {
+  width: 100%;
+  margin: 0 auto;
+}
+.fortune-menu {
+  /* 冒頭コンセプト */
+}
+.fortune-menu__title {
+  margin-bottom: 16px;
+  padding-top: 0;
+  border-top: none;
+  text-shadow: none;
+  font-size: 42px;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+}
+.fortune-menu__lead {
+  margin: 0 auto 28px;
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.85;
+  color: #78716c;
+  text-align: center;
+}
+.fortune-menu {
+  /* 相談ジャンルと占術 */
+}
+.fortune-menu__info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.fortune-menu__info-card {
+  padding: 24px;
+}
+.fortune-menu__info-title {
+  margin: 0 0 12px;
+  font-size: 21px;
+  line-height: 1.4;
+  color: #4a423f;
+}
+.fortune-menu__list {
+  margin: 0;
+  padding-left: 20px;
+}
+.fortune-menu__list li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #78716c;
+}
+.fortune-menu__list li:last-child {
+  margin-bottom: 0;
+}
+.fortune-menu {
+  /* 料金プランカード */
+}
+.fortune-menu__plans {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.fortune-menu__plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+}
+.fortune-menu__plan-card--recommended {
+  border: 1px solid rgba(236, 72, 153, 0.35);
+  box-shadow: 0 20px 25px -5px rgba(236, 72, 153, 0.1), 0 8px 10px -6px rgba(236, 72, 153, 0.12);
+}
+.fortune-menu__badge {
+  position: absolute;
+  top: -12px;
+  right: 14px;
+  margin: 0;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #fb923c, #ec4899);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.fortune-menu__plan-name {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #4a423f;
+}
+.fortune-menu__plan-sub {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #78716c;
+}
+.fortune-menu__price {
+  margin: 4px 0;
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 900;
+  color: #ec4899;
+  letter-spacing: 0.02em;
+}
+.fortune-menu__for {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #4a423f;
+  font-weight: 600;
+}
+.fortune-menu__detail {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #78716c;
+}
+.fortune-menu {
+  /* 申し込みフローと最終CTA */
+}
+.fortune-menu__flow {
+  padding: 24px;
+  text-align: center;
+}
+.fortune-menu__flow-title {
+  margin: 0 0 14px;
+  font-size: 22px;
+  line-height: 1.4;
+  color: #4a423f;
+}
+.fortune-menu__flow-list {
+  margin: 0 0 20px;
+  padding-left: 20px;
+  text-align: left;
+}
+.fortune-menu__flow-list li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #78716c;
+}
+.fortune-menu__flow-list li:last-child {
+  margin-bottom: 0;
+}
+.fortune-menu__line-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #f6d365, #fda085);
+  color: #fff;
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.fortune-menu__line-cta:focus-visible {
+  outline: 2px solid rgba(74, 66, 63, 0.45);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .fortune-menu__line-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+}
+.fortune-menu__line-cta:active {
+  transform: translateY(1px);
+}
+.fortune-menu__line-help {
+  margin: 14px auto 0;
+  max-width: 650px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #78716c;
+}
+
+/* ==========================
+タブレット調整
+========================== */
+@media screen and (max-width: 1023px) {
+  .fortune-menu__title {
+    font-size: 36px;
+  }
+  .fortune-menu__plans {
+    grid-template-columns: 1fr;
+  }
+  .fortune-menu__price {
+    font-size: 36px;
+  }
+}
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .fortune-menu__title {
+    margin-bottom: 12px;
+    font-size: 31px;
+    line-height: 1.3;
+  }
+  .fortune-menu__lead {
+    margin-bottom: 22px;
+    font-size: 16px;
+    line-height: 1.8;
+    text-align: left;
+  }
+  .fortune-menu__info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .fortune-menu__info-card, .fortune-menu__flow, .fortune-menu__plan-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .fortune-menu__info-title {
+    font-size: 19px;
+  }
+  .fortune-menu__list li {
+    font-size: 14px;
+  }
+  .fortune-menu__plans {
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .fortune-menu__badge {
+    right: 12px;
+  }
+  .fortune-menu__plan-name {
+    font-size: 20px;
+  }
+  .fortune-menu__price {
+    font-size: 32px;
+  }
+  .fortune-menu__flow-title {
+    font-size: 20px;
+  }
+  .fortune-menu__flow-list li {
+    font-size: 14px;
+  }
+  .fortune-menu__line-cta {
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+  .fortune-menu__line-help {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: left;
+  }
+}
+/* ==========================
 ニュースセクション全体
 ========================== */
 .news {
