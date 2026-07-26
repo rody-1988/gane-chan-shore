@@ -62,10 +62,19 @@ body {
   width: 100%;
   margin: 0 auto;
   display: flex;
+  align-items: center;
   min-height: 100vh;
   max-width: 1080px;
   flex-direction: column;
   padding: 48px 24px 36px;
+}
+
+.page__header,
+.main,
+.page__footer {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 /* ==========================
@@ -78,14 +87,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 72px;
+  gap: 80px;
+  text-align: center;
 }
 
 /* セクションの共通幅 */
 .main > section {
   width: 100%;
   max-width: 960px;
-  margin: 0;
+  margin: 0 auto;
 }
 
 /* ==========================
@@ -104,6 +114,17 @@ h2 {
   text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
+/* セクションごとの見出しリズムを少し変える */
+.concept h2,
+.fortune-menu h2 {
+  margin-bottom: 30px;
+}
+
+.reviews h2,
+.news h2 {
+  margin-bottom: 20px;
+}
+
 /* ==========================
 スマートフォン調整（375px付近を基準）
 ========================== */
@@ -112,7 +133,7 @@ h2 {
     padding: 28px 16px 36px;
   }
   .main {
-    gap: 56px;
+    gap: 62px;
   }
   h2 {
     margin-bottom: 28px;
@@ -189,11 +210,28 @@ h2 {
   animation: float 3s ease-in-out infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-float {
+    animation: none !important;
+    transform: none !important;
+  }
+}
 /* ==========================
 ヘッダー全体
 ========================== */
 .page__header {
-  margin-bottom: 52px;
+  margin-bottom: 44px;
   text-align: center;
 }
 .page__header-emoji {
@@ -206,9 +244,9 @@ h2 {
 /* メインタイトル */
 .page__title {
   margin: 0;
-  font-size: 34px;
-  line-height: 1.35;
-  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.32;
+  font-weight: 800;
   letter-spacing: 0.08em;
   color: #4a423f;
 }
@@ -223,25 +261,40 @@ h2 {
   text-transform: uppercase;
 }
 
+/* ファーストビュー補助コピー */
+.page__lead {
+  margin: 14px auto 0;
+  max-width: 640px;
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 600;
+  color: #4a423f;
+}
+
 /* ==========================
 スマートフォン用
 ========================== */
 @media screen and (max-width: 767px) {
   .page__header {
-    margin-bottom: 40px;
+    margin-bottom: 34px;
   }
   .page__header-emoji {
     margin-bottom: 12px;
     font-size: 34px;
   }
   .page__title {
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1.35;
     letter-spacing: 0.06em;
   }
   .page__subtitle {
     margin-top: 8px;
     font-size: 12px;
+  }
+  .page__lead {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.7;
   }
 }
 /* ==========================
@@ -257,7 +310,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 26px;
   padding: 0;
 }
 .page__footer-links li a {
@@ -270,7 +323,7 @@ h2 {
   line-height: 1.4;
   text-decoration: none;
   color: #78716c;
-  background: rgba(255, 255, 255, 0.46);
+  background: rgba(255, 255, 255, 0.34);
   border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: 14px;
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
@@ -293,18 +346,21 @@ h2 {
   /* 公式LINEエリア */
 }
 .page__footer-line {
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.55);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 .page__footer-line-text {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.6;
-  color: #78716c;
+  color: #4a423f;
 }
 .page__footer-line-link img {
   width: 138px;
@@ -344,14 +400,14 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 36px;
+  gap: 34px;
 }
 
 /* ==========================
 おみくじヒーロー
 ========================== */
 .omikuji-hero {
-  gap: 32px;
+  gap: 40px;
 }
 
 /* ==========================
@@ -359,10 +415,10 @@ h2 {
 ========================== */
 @media screen and (max-width: 767px) {
   .section, .omikuji-hero {
-    gap: 28px;
+    gap: 26px;
   }
   .omikuji-hero {
-    gap: 24px;
+    gap: 30px;
   }
 }
 /* ==========================
@@ -373,7 +429,7 @@ h2 {
   max-width: 720px;
   margin: 0 auto;
   border-radius: 24px;
-  padding: 40px 36px;
+  padding: 44px 40px;
   text-align: center;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -405,10 +461,18 @@ h2 {
   line-height: 1.2;
   font-weight: 900;
   letter-spacing: -0.05em;
-  color: transparent;
+  color: #fb923c;
   background: linear-gradient(to right, #fb923c, #ec4899);
-  background-clip: text;
-  -webkit-background-clip: text;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .omikuji-card__title {
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+}
+.omikuji-card__title {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 .omikuji-card__message {
   position: relative;
@@ -491,10 +555,25 @@ h2 {
   transform: translateY(1px);
 }
 
+/* ヒーロー全体の背景ハイライト */
+.omikuji-hero {
+  position: relative;
+}
+.omikuji-hero::before {
+  content: "";
+  position: absolute;
+  inset: -14px -8px;
+  border-radius: 28px;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.5), transparent 68%);
+  pointer-events: none;
+}
+
 /* ==========================
 ヒーローのボタン配置
 ========================== */
 .omikuji-hero__btn {
+  position: relative;
+  z-index: 1;
   margin: 0 auto;
 }
 
@@ -504,7 +583,7 @@ h2 {
 @media screen and (max-width: 767px) {
   .omikuji-card {
     border-radius: 20px;
-    padding: 28px 20px;
+    padding: 30px 20px;
   }
   .omikuji-card__title {
     margin-top: 14px;
@@ -537,6 +616,9 @@ h2 {
 ========================== */
 .concept {
   width: 100%;
+  padding: 24px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.2) 100%);
 }
 .concept__title {
   margin-bottom: 34px;
@@ -590,6 +672,10 @@ h2 {
 スマートフォン用
 ========================== */
 @media screen and (max-width: 767px) {
+  .concept {
+    padding: 18px;
+    border-radius: 20px;
+  }
   .concept__title {
     margin-bottom: 26px;
   }
@@ -626,7 +712,7 @@ h2 {
 }
 .fortune-menu__lead {
   margin: 0 auto 28px;
-  max-width: 760px;
+  max-width: 700px;
   font-size: 18px;
   line-height: 1.85;
   color: #78716c;
@@ -652,7 +738,9 @@ h2 {
 }
 .fortune-menu__list {
   margin: 0;
-  padding-left: 20px;
+  padding-left: 0;
+  list-style-position: inside;
+  text-align: center;
 }
 .fortune-menu__list li {
   margin-bottom: 8px;
@@ -676,7 +764,7 @@ h2 {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   padding: 24px;
 }
 .fortune-menu__plan-card--recommended {
@@ -708,9 +796,10 @@ h2 {
   font-size: 14px;
   line-height: 1.6;
   color: #78716c;
+  letter-spacing: 0.02em;
 }
 .fortune-menu__price {
-  margin: 4px 0;
+  margin: 6px 0 2px;
   font-size: 40px;
   line-height: 1.2;
   font-weight: 900;
@@ -725,7 +814,9 @@ h2 {
   font-weight: 600;
 }
 .fortune-menu__detail {
-  margin: 0;
+  margin: 2px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(168, 162, 158, 0.2);
   font-size: 14px;
   line-height: 1.7;
   color: #78716c;
@@ -736,6 +827,15 @@ h2 {
 .fortune-menu__flow {
   padding: 24px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.fortune-menu__flow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(251, 146, 60, 0.16), transparent 62%);
+  pointer-events: none;
 }
 .fortune-menu__flow-title {
   margin: 0 0 14px;
@@ -745,8 +845,9 @@ h2 {
 }
 .fortune-menu__flow-list {
   margin: 0 0 20px;
-  padding-left: 20px;
-  text-align: left;
+  padding-left: 0;
+  list-style-position: inside;
+  text-align: center;
 }
 .fortune-menu__flow-list li {
   margin-bottom: 8px;
@@ -758,17 +859,22 @@ h2 {
   margin-bottom: 0;
 }
 .fortune-menu__line-cta {
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 54px;
-  padding: 14px 28px;
+  width: 100%;
+  max-width: 430px;
+  min-height: 58px;
+  padding: 16px 28px;
   border-radius: 999px;
   background: linear-gradient(to right, #f6d365, #fda085);
   color: #fff;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.3;
   font-weight: 700;
+  letter-spacing: 0.03em;
   text-decoration: none;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -779,7 +885,7 @@ h2 {
 }
 @media (hover: hover) and (pointer: fine) {
   .fortune-menu__line-cta:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   }
 }
@@ -787,7 +893,9 @@ h2 {
   transform: translateY(1px);
 }
 .fortune-menu__line-help {
-  margin: 14px auto 0;
+  position: relative;
+  z-index: 2;
+  margin: 16px auto 0;
   max-width: 650px;
   font-size: 14px;
   line-height: 1.75;
@@ -821,7 +929,7 @@ h2 {
     margin-bottom: 22px;
     font-size: 16px;
     line-height: 1.8;
-    text-align: left;
+    text-align: center;
   }
   .fortune-menu__info-grid {
     grid-template-columns: 1fr;
@@ -842,6 +950,9 @@ h2 {
     gap: 12px;
     margin-bottom: 18px;
   }
+  .fortune-menu__plan-card {
+    gap: 9px;
+  }
   .fortune-menu__badge {
     right: 12px;
   }
@@ -853,6 +964,9 @@ h2 {
   }
   .fortune-menu__flow-title {
     font-size: 20px;
+  }
+  .fortune-menu__flow-list {
+    margin-bottom: 16px;
   }
   .fortune-menu__flow-list li {
     font-size: 14px;
@@ -867,137 +981,7 @@ h2 {
     margin-top: 12px;
     font-size: 13px;
     line-height: 1.7;
-    text-align: left;
-  }
-}
-/* ==========================
-ニュースセクション全体
-========================== */
-.news {
-  width: 100%;
-}
-.news__inner {
-  width: 100%;
-  padding: 0;
-}
-.news__title {
-  margin-bottom: 34px;
-}
-.news {
-  /* グループ（Roots / Seeds） */
-}
-.news__group {
-  margin-bottom: 44px;
-}
-.news__group:last-child {
-  margin-bottom: 0;
-}
-.news__group-title {
-  margin: 0 0 18px;
-  font-size: 24px;
-  line-height: 1.3;
-  letter-spacing: 0.1em;
-  color: #78716c;
-  border-left: 3px solid #a8a29e;
-  padding-left: 14px;
-}
-.news__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.news {
-  /* ニュース1行 */
-}
-.news__item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(168, 162, 158, 0.2);
-  font-size: 15px;
-  line-height: 1.75;
-}
-.news__item.is-hidden {
-  display: none;
-}
-.news__date {
-  flex: 0 0 98px;
-  color: #78716c;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 1.6;
-  letter-spacing: 0.02em;
-}
-.news__content {
-  flex: 1;
-  min-width: 0;
-  color: #4a423f;
-  overflow-wrap: anywhere;
-}
-.news {
-  /* Read moreボタン */
-}
-.news__more-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 14px;
-  min-height: 40px;
-  padding: 0 6px;
-  background: none;
-  border: none;
-  color: #a8a29e;
-  font-size: 14px;
-  line-height: 1.4;
-  font-style: italic;
-  cursor: pointer;
-  text-decoration: underline;
-  transition: color 0.3s ease;
-}
-.news__more-link:focus-visible {
-  outline: 2px solid rgba(74, 66, 63, 0.35);
-  outline-offset: 2px;
-  border-radius: 8px;
-}
-@media (hover: hover) and (pointer: fine) {
-  .news__more-link:hover {
-    color: #78716c;
-  }
-}
-.news__more-link:active {
-  color: #4a423f;
-}
-
-/* ==========================
-スマートフォン用
-========================== */
-@media screen and (max-width: 767px) {
-  .news__title {
-    margin-bottom: 26px;
-  }
-  .news__group {
-    margin-bottom: 34px;
-  }
-  .news__group-title {
-    font-size: 21px;
-    margin-bottom: 14px;
-    padding-left: 12px;
-  }
-  .news__item {
-    flex-direction: column;
-    gap: 4px;
-    padding: 12px 0;
-    font-size: 14px;
-    line-height: 1.7;
-  }
-  .news__date {
-    flex: 0 0 auto;
-    font-size: 13px;
-  }
-  .news__more-link {
-    margin-top: 10px;
-    font-size: 13px;
+    text-align: center;
   }
 }
 /* ==========================
@@ -1029,6 +1013,8 @@ h2 {
 }
 .reviews__description {
   margin: 0 0 28px;
+  max-width: 700px;
+  margin-inline: auto;
   text-align: center;
   font-size: 16px;
   line-height: 1.8;
@@ -1051,6 +1037,7 @@ h2 {
   gap: 14px;
   padding: 24px;
   border-radius: 24px;
+  border: 1px solid rgba(168, 162, 158, 0.22);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.78);
 }
@@ -1076,6 +1063,7 @@ h2 {
   margin: 0;
   font-size: 16px;
   line-height: 1.85;
+  letter-spacing: 0.01em;
   color: #4a423f;
   white-space: normal;
   overflow-wrap: anywhere;
@@ -1084,6 +1072,8 @@ h2 {
 }
 .reviews__person-block {
   margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(168, 162, 158, 0.24);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -1111,9 +1101,13 @@ h2 {
   align-items: center;
   gap: 12px;
   text-align: center;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.45);
 }
 .reviews__cta-text {
   margin: 0;
+  max-width: 620px;
   font-size: 16px;
   line-height: 1.8;
   color: #78716c;
@@ -1122,17 +1116,18 @@ h2 {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-width: 220px;
-  min-height: 50px;
+  min-width: 250px;
+  min-height: 48px;
   padding: 12px 24px;
   border-radius: 999px;
-  background: linear-gradient(to right, #f6d365, #fda085);
-  color: #fff;
-  font-size: 16px;
+  border: 1px solid rgba(168, 162, 158, 0.7);
+  background: rgba(255, 255, 255, 0.8);
+  color: #4a423f;
+  font-size: 15px;
   line-height: 1.3;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 18px -8px rgba(0, 0, 0, 0.15);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .reviews__cta-link:focus-visible {
@@ -1142,7 +1137,7 @@ h2 {
 @media (hover: hover) and (pointer: fine) {
   .reviews__cta-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 15px 24px -10px rgba(0, 0, 0, 0.2);
   }
 }
 .reviews__cta-link:active {
@@ -1190,6 +1185,7 @@ h2 {
   }
   .reviews__description {
     margin-bottom: 22px;
+    margin-inline: auto;
     font-size: 15px;
   }
   .reviews__swiper {
@@ -1213,6 +1209,12 @@ h2 {
     min-width: 0;
     min-height: 48px;
     font-size: 15px;
+  }
+  .reviews__cta {
+    padding: 16px;
+  }
+  .reviews__cta-text {
+    text-align: center;
   }
 }
 

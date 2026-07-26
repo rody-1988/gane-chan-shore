@@ -8,7 +8,7 @@
   max-width: 720px;
   margin: 0 auto;
   border-radius: 24px;
-  padding: 40px 36px;
+  padding: 44px 40px;
   text-align: center;
   box-shadow: $shadow-card;
   transition:
@@ -44,10 +44,16 @@
     line-height: 1.2;
     font-weight: 900;
     letter-spacing: -0.05em;
-    color: transparent;
+    color: #fb923c;
     background: $gradient-title;
-    background-clip: text;
-    -webkit-background-clip: text;
+
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    text-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
   }
 
   &__message {
@@ -141,10 +147,30 @@
   }
 }
 
+/* ヒーロー全体の背景ハイライト */
+.omikuji-hero {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -14px -8px;
+    border-radius: 28px;
+    background: radial-gradient(
+      circle at top,
+      rgb(255 255 255 / 0.5),
+      transparent 68%
+    );
+    pointer-events: none;
+  }
+}
+
 /* ==========================
 ヒーローのボタン配置
 ========================== */
 .omikuji-hero__btn {
+  position: relative;
+  z-index: 1;
   margin: 0 auto;
 }
 
@@ -154,7 +180,7 @@
 @media screen and (max-width: 767px) {
   .omikuji-card {
     border-radius: 20px;
-    padding: 28px 20px;
+    padding: 30px 20px;
 
     &__title {
       margin-top: 14px;

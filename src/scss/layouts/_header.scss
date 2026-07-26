@@ -4,7 +4,7 @@
 ヘッダー全体
 ========================== */
 .page__header {
-  margin-bottom: 52px;
+  margin-bottom: 44px;
   text-align: center;
 
   &-emoji {
@@ -18,9 +18,9 @@
 /* メインタイトル */
 .page__title {
   margin: 0;
-  font-size: 34px;
-  line-height: 1.35;
-  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.32;
+  font-weight: 800;
   letter-spacing: 0.08em;
   color: $color-gane-dark;
 }
@@ -35,12 +35,22 @@
   text-transform: uppercase;
 }
 
+/* ファーストビュー補助コピー */
+.page__lead {
+  margin: 14px auto 0;
+  max-width: 640px;
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 600;
+  color: $color-gane-dark;
+}
+
 /* ==========================
 スマートフォン用
 ========================== */
 @media screen and (max-width: 767px) {
   .page__header {
-    margin-bottom: 40px;
+    margin-bottom: 34px;
 
     &-emoji {
       margin-bottom: 12px;
@@ -49,7 +59,7 @@
   }
 
   .page__title {
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1.35;
     letter-spacing: 0.06em;
   }
@@ -57,5 +67,11 @@
   .page__subtitle {
     margin-top: 8px;
     font-size: 12px;
+  }
+
+  .page__lead {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.7;
   }
 }
