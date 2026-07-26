@@ -1,4 +1,7 @@
 @charset "UTF-8";
+/* ==========================
+レイアウト共通値
+========================== */
 *,
 *::before,
 *::after {
@@ -29,12 +32,18 @@ button {
   font: inherit;
 }
 
+/* ==========================
+共通リセット
+========================== */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* ==========================
+ページ全体の土台
+========================== */
 body {
   margin: 0;
   min-height: 100vh;
@@ -43,70 +52,131 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
 }
 
+/* ==========================
+ページ全体のコンテナ
+========================== */
 .page {
+  width: 100%;
   margin: 0 auto;
   display: flex;
   min-height: 100vh;
-  max-width: 32rem;
+  max-width: 1080px;
   flex-direction: column;
-  padding: 3rem 1.5rem;
+  padding: 48px 24px 36px;
 }
 
+/* ==========================
+メインコンテンツの並び
+========================== */
 .main {
+  width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.5rem;
+  gap: 72px;
 }
 
-section {
+/* セクションの共通幅 */
+.main > section {
   width: 100%;
-  margin-bottom: 50px;
+  max-width: 960px;
+  margin: 0;
 }
 
+/* ==========================
+セクション見出し（h2）
+========================== */
 h2 {
-  font-size: 2.5rem;
+  margin: 0 0 40px;
+  padding-top: 40px;
+  border-top: 2px dotted #a8a29e;
+  font-size: 40px;
+  line-height: 1.25;
+  font-weight: 700;
   color: #4a423f;
   letter-spacing: 0.1em;
-  margin-bottom: 3rem;
   text-align: center;
   text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.1);
-  padding-top: 5rem;
-  border-top: 2px dotted #a8a29e;
 }
 
+/* ==========================
+スマートフォン調整（375px付近を基準）
+========================== */
+@media screen and (max-width: 767px) {
+  .page {
+    padding: 28px 16px 36px;
+  }
+  .main {
+    gap: 56px;
+  }
+  h2 {
+    margin-bottom: 28px;
+    padding-top: 28px;
+    font-size: 30px;
+    line-height: 1.3;
+  }
+}
+/* ==========================
+ガラスカード共通
+========================== */
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 24px;
 }
 
+/* ==========================
+メインアクションボタン
+========================== */
 .btn-draw {
   width: 100%;
-  max-width: 20rem;
+  max-width: 320px;
+  min-height: 54px;
   border: none;
   border-radius: 9999px;
-  padding: 1rem 1.5rem;
+  padding: 14px 24px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 18px;
+  line-height: 1.2;
   font-weight: 700;
+  letter-spacing: 0.04em;
   color: #fff;
   background: linear-gradient(to right, #f6d365, #fda085);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.btn-draw:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  transform: scale(1.05);
+.btn-draw:focus-visible {
+  outline: 2px solid rgba(74, 66, 63, 0.45);
+  outline-offset: 3px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-draw:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+  }
 }
 .btn-draw:active {
-  transform: scale(0.95);
+  transform: translateY(1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .btn-draw {
+    max-width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+    font-size: 17px;
+  }
+}
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -119,103 +189,191 @@ h2 {
   animation: float 3s ease-in-out infinite;
 }
 
+/* ==========================
+ヘッダー全体
+========================== */
 .page__header {
-  margin-bottom: 3rem;
+  margin-bottom: 52px;
   text-align: center;
 }
 .page__header-emoji {
   display: inline-block;
-  margin-bottom: 1rem;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+  margin-bottom: 14px;
+  font-size: 40px;
+  line-height: 1;
 }
 
+/* メインタイトル */
 .page__title {
   margin: 0;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 34px;
+  line-height: 1.35;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: #4a423f;
 }
 
+/* サブタイトル */
 .page__subtitle {
-  margin: 0.5rem 0 0;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  letter-spacing: 0.1em;
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
   color: #78716c;
   text-transform: uppercase;
 }
 
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .page__header {
+    margin-bottom: 40px;
+  }
+  .page__header-emoji {
+    margin-bottom: 12px;
+    font-size: 34px;
+  }
+  .page__title {
+    font-size: 28px;
+    line-height: 1.35;
+    letter-spacing: 0.06em;
+  }
+  .page__subtitle {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+}
+/* ==========================
+フッター全体
+========================== */
 .page__footer {
-  padding: 2rem 1.5rem;
+  width: 100%;
+  padding: 20px 0 0;
   text-align: center;
+  /* フッターリンク一覧 */
 }
 .page__footer-links {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 32px;
+  padding: 0;
 }
 .page__footer-links li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 44px;
+  min-height: 46px;
+  padding: 0 10px;
   font-size: 13px;
+  line-height: 1.4;
+  text-decoration: none;
   color: #78716c;
-  background: rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.46);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 14px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
-.page__footer-links li a:hover {
-  background: rgba(255, 255, 255, 0.8);
-  color: #4a423f;
+.page__footer-links li a:focus-visible {
+  outline: 2px solid rgba(74, 66, 63, 0.35);
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .page__footer-links li a:hover {
+    background: rgba(255, 255, 255, 0.82);
+    color: #4a423f;
+    transform: translateY(-1px);
+  }
+}
+.page__footer-links li a:active {
+  transform: translateY(1px);
+}
+.page__footer {
+  /* 公式LINEエリア */
 }
 .page__footer-line {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
+  gap: 12px;
+  margin-bottom: 30px;
 }
 .page__footer-line-text {
+  margin: 0;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 700;
+  line-height: 1.6;
   color: #78716c;
 }
 .page__footer-line-link img {
   width: 138px;
   height: auto;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
 }
-.page__footer-line-link img:hover {
-  opacity: 0.8;
+@media (hover: hover) and (pointer: fine) {
+  .page__footer-line-link img:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
 }
 .page__footer-copyright {
-  font-size: 10px;
+  font-size: 11px;
+  line-height: 1.6;
   color: #a8a29e;
 }
 
+/* ==========================
+デスクトップ用
+========================== */
+@media screen and (min-width: 768px) {
+  .page__footer {
+    padding-top: 26px;
+  }
+  .page__footer-links {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+/* ==========================
+共通セクション
+========================== */
 .section, .omikuji-hero {
   width: 100%;
-  padding: 2rem 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: 36px;
 }
 
+/* ==========================
+おみくじヒーロー
+========================== */
 .omikuji-hero {
-  padding: 3rem 0;
+  gap: 32px;
 }
 
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .section, .omikuji-hero {
+    gap: 28px;
+  }
+  .omikuji-hero {
+    gap: 24px;
+  }
+}
+/* ==========================
+おみくじカード全体
+========================== */
 .omikuji-card {
-  /* components/_glass.scss で定義した glass-card を継承 */
   width: 100%;
-  border-radius: 1.5rem;
-  padding: 2.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: 24px;
+  padding: 40px 36px;
   text-align: center;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease, box-shadow 0.5s ease;
@@ -233,8 +391,8 @@ h2 {
   position: relative;
   z-index: 10;
   margin: 0;
-  font-size: 0.75rem;
-  line-height: 1rem;
+  font-size: 12px;
+  line-height: 1.4;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: #a8a29e;
@@ -242,9 +400,9 @@ h2 {
 .omikuji-card__title {
   position: relative;
   z-index: 10;
-  margin: 1rem 0 0;
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+  margin: 16px 0 0;
+  font-size: 44px;
+  line-height: 1.2;
   font-weight: 900;
   letter-spacing: -0.05em;
   color: transparent;
@@ -255,157 +413,362 @@ h2 {
 .omikuji-card__message {
   position: relative;
   z-index: 10;
-  margin: 2rem 0 0;
-  font-size: 1rem;
-  line-height: 1.625;
+  margin: 28px 0 0;
+  font-size: 18px;
+  line-height: 1.7;
   font-weight: 500;
   color: #4a423f;
   white-space: pre-line;
 }
+.omikuji-card {
+  /* 結果の詳細（カラー・ナンバー・シェア） */
+}
 .omikuji-card__details {
-  margin-top: 1.5rem;
-  padding-top: 1rem;
+  margin-top: 24px;
+  padding-top: 16px;
   border-top: 1px dashed rgba(255, 255, 255, 0.3);
   display: none;
+  font-size: 16px;
+  line-height: 1.7;
 }
 .omikuji-card__details .result-meta {
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
+  margin-bottom: 14px;
+  font-size: 16px;
 }
 .omikuji-card__details .color-dot {
   display: inline-block;
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  margin-right: 5px;
+  margin-right: 6px;
+}
+.omikuji-card {
+  /* シェアエリア */
 }
 .omikuji-card .share-area {
   display: none;
 }
 .omikuji-card .share-area .share-label {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 0.8rem;
-  margin: 20px 0;
+  margin: 18px 0 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
   opacity: 0.8;
 }
 .omikuji-card .share-area .share-btns-container {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .omikuji-card .share-area .share-btn {
-  flex: 1;
-  max-width: 100px;
-  padding: 8px 0;
+  flex: 1 1 110px;
+  min-height: 40px;
+  max-width: 120px;
+  padding: 8px 12px;
   border-radius: 50px;
   border: 1px solid rgba(202, 178, 178, 0.8);
   background: rgba(21, 178, 223, 0.2);
-  margin-top: 1rem;
-  color: black;
-  font-size: 0.8rem;
+  margin-top: 0;
+  color: #202020;
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
-.omikuji-card .share-area .share-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+.omikuji-card .share-area .share-btn:focus-visible {
+  outline: 2px solid rgba(74, 66, 63, 0.4);
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .omikuji-card .share-area .share-btn:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+  }
+}
+.omikuji-card .share-area .share-btn:active {
+  transform: translateY(1px);
 }
 
+/* ==========================
+ヒーローのボタン配置
+========================== */
+.omikuji-hero__btn {
+  margin: 0 auto;
+}
+
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .omikuji-card {
+    border-radius: 20px;
+    padding: 28px 20px;
+  }
+  .omikuji-card__title {
+    margin-top: 14px;
+    font-size: 34px;
+  }
+  .omikuji-card__message {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .omikuji-card__details {
+    margin-top: 20px;
+    padding-top: 14px;
+    font-size: 15px;
+  }
+  .omikuji-card__details .result-meta {
+    font-size: 15px;
+  }
+  .omikuji-card .share-area .share-label {
+    margin: 14px 0 12px;
+    font-size: 16px;
+  }
+  .omikuji-card .share-area .share-btn {
+    min-height: 38px;
+    font-size: 12px;
+  }
+}
+/* ==========================
+コンセプトセクション
+========================== */
+.concept {
+  width: 100%;
+}
+.concept__title {
+  margin-bottom: 34px;
+}
+.concept {
+  /* 本文テキスト */
+}
 .concept__description {
-  font-size: 1rem;
-  line-height: 1.75;
+  margin: 0 0 10px;
+  font-size: 18px;
+  line-height: 1.9;
   color: #78716c;
   text-align: center;
-  margin-bottom: 2rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.concept__description:last-child {
+  margin-bottom: 0;
+}
+.concept__description {
+  /* おみくじリンク */
 }
 .concept__description-link {
   color: rgb(255, 93, 93);
-  font-size: 1.5rem;
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 700;
   text-decoration-line: underline;
 }
-.concept__description-link:hover {
-  color: rgba(255, 93, 236, 0.7);
-  transition: all 0.3s ease;
+@media (hover: hover) and (pointer: fine) {
+  .concept__description-link:hover {
+    color: rgba(255, 93, 236, 0.7);
+    transition: color 0.3s ease;
+  }
+}
+.concept__description {
+  /* WEB×占いの強調テキスト */
 }
 .concept__description-span {
   display: inline-block;
-  margin: 1rem 0;
-  font-size: 1.5rem;
+  margin: 14px 0 8px;
+  font-size: 28px;
+  line-height: 1.4;
   color: rgb(128, 182, 240);
   text-decoration-line: underline;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
 
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .concept__title {
+    margin-bottom: 26px;
+  }
+  .concept__description {
+    margin-bottom: 8px;
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  .concept__description-link, .concept__description-span {
+    font-size: 24px;
+  }
+}
+/* ==========================
+ニュースセクション全体
+========================== */
+.news {
+  width: 100%;
+}
+.news__inner {
+  width: 100%;
+  padding: 0;
+}
+.news__title {
+  margin-bottom: 34px;
+}
+.news {
+  /* グループ（Roots / Seeds） */
+}
 .news__group {
-  margin-bottom: 3.5rem;
+  margin-bottom: 44px;
+}
+.news__group:last-child {
+  margin-bottom: 0;
 }
 .news__group-title {
-  font-size: 1.2rem;
+  margin: 0 0 18px;
+  font-size: 24px;
+  line-height: 1.3;
   letter-spacing: 0.1em;
   color: #78716c;
-  margin-bottom: 1.5rem;
   border-left: 3px solid #a8a29e;
-  padding-left: 1rem;
+  padding-left: 14px;
+}
+.news__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.news {
+  /* ニュース1行 */
 }
 .news__item {
   display: flex;
-  gap: 1.5rem;
-  padding: 1rem 0;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 0;
   border-bottom: 1px solid rgba(168, 162, 158, 0.2);
-  font-size: 0.95rem;
+  font-size: 15px;
+  line-height: 1.75;
 }
 .news__item.is-hidden {
   display: none;
 }
+.news__date {
+  flex: 0 0 98px;
+  color: #78716c;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+.news__content {
+  flex: 1;
+  min-width: 0;
+  color: #4a423f;
+  overflow-wrap: anywhere;
+}
+.news {
+  /* Read moreボタン */
+}
 .news__more-link {
-  display: block;
-  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 14px;
+  min-height: 40px;
+  padding: 0 6px;
   background: none;
   border: none;
   color: #a8a29e;
-  font-size: 0.85rem;
+  font-size: 14px;
+  line-height: 1.4;
   font-style: italic;
   cursor: pointer;
   text-decoration: underline;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
-.news__more-link:hover {
-  color: #78716c;
+.news__more-link:focus-visible {
+  outline: 2px solid rgba(74, 66, 63, 0.35);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .news__more-link:hover {
+    color: #78716c;
+  }
+}
+.news__more-link:active {
+  color: #4a423f;
 }
 
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .news__title {
+    margin-bottom: 26px;
+  }
+  .news__group {
+    margin-bottom: 34px;
+  }
+  .news__group-title {
+    font-size: 21px;
+    margin-bottom: 14px;
+    padding-left: 12px;
+  }
+  .news__item {
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 0;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .news__date {
+    flex: 0 0 auto;
+    font-size: 13px;
+  }
+  .news__more-link {
+    margin-top: 10px;
+    font-size: 13px;
+  }
+}
+/* ==========================
+レビューセクション全体
+========================== */
 .reviews {
   width: 100%;
-  padding: 2.5rem 0 3rem;
+  padding: 0;
 }
-.reviews .container {
-  width: min(100%, 1200px);
+.reviews__inner {
+  width: 100%;
   margin: 0 auto;
-  padding: 0 1.25rem;
+  padding: 0;
+}
+.reviews {
+  /* セクション見出し */
 }
 .reviews__title {
   padding-top: 0;
-  margin-bottom: 0.75rem;
+  margin-bottom: 10px;
   border-top: none;
   text-shadow: none;
-  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  font-size: 36px;
+  line-height: 1.3;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-align: center;
   color: #4a423f;
 }
 .reviews__description {
-  margin-bottom: 1.5rem;
+  margin: 0 0 28px;
   text-align: center;
-  font-size: 0.95rem;
+  font-size: 16px;
   line-height: 1.8;
   color: #78716c;
 }
 .reviews__swiper {
   width: 100%;
-  padding-bottom: 2.2rem;
+  padding-bottom: 34px;
 }
 .reviews__wrapper {
   align-items: stretch;
@@ -417,27 +780,15 @@ h2 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  padding: 1.4rem;
-  border-radius: 1.25rem;
+  gap: 14px;
+  padding: 24px;
+  border-radius: 24px;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
   background: rgba(255, 255, 255, 0.78);
 }
-@media (min-width: 1024px) {
-  .reviews__card {
-    padding: 1.7rem 1.8rem;
-    border-radius: 1.5rem;
-  }
-  .reviews__quote {
-    font-size: 1rem;
-  }
-  .reviews__person {
-    font-size: 1rem;
-  }
-}
 .reviews__rating {
   margin: 0;
-  font-size: 1rem;
+  font-size: 16px;
   letter-spacing: 0.2em;
   color: #f59e0b;
 }
@@ -445,17 +796,18 @@ h2 {
   display: inline-block;
   width: fit-content;
   margin: 0;
-  padding: 0.35rem 0.7rem;
+  padding: 6px 12px;
   border-radius: 999px;
   background: rgba(120, 113, 108, 0.12);
   color: #78716c;
-  font-size: 0.78rem;
+  font-size: 13px;
+  line-height: 1.4;
   letter-spacing: 0.08em;
 }
 .reviews__quote {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: 1.85;
   color: #4a423f;
   white-space: normal;
   overflow-wrap: anywhere;
@@ -466,30 +818,35 @@ h2 {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 4px;
 }
 .reviews__person {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 16px;
+  line-height: 1.5;
   font-weight: 700;
   color: #4a423f;
 }
 .reviews__meta {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 14px;
+  line-height: 1.6;
   color: #78716c;
 }
+.reviews {
+  /* CTA */
+}
 .reviews__cta {
-  margin-top: 1.25rem;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 12px;
   text-align: center;
 }
 .reviews__cta-text {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 16px;
   line-height: 1.8;
   color: #78716c;
 }
@@ -497,30 +854,98 @@ h2 {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  min-width: 12rem;
-  padding: 0.8rem 1.2rem;
+  min-width: 220px;
+  min-height: 50px;
+  padding: 12px 24px;
   border-radius: 999px;
   background: linear-gradient(to right, #f6d365, #fda085);
   color: #fff;
+  font-size: 16px;
+  line-height: 1.3;
   font-weight: 700;
   text-decoration: none;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.reviews__cta-link:focus-visible {
+  outline: 2px solid rgba(74, 66, 63, 0.35);
+  outline-offset: 2px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .reviews__cta-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+}
+.reviews__cta-link:active {
+  transform: translateY(1px);
 }
 .reviews__status, .reviews__empty {
   text-align: center;
-  font-size: 0.92rem;
+  font-size: 14px;
+  line-height: 1.6;
   color: #78716c;
 }
 .reviews .swiper-pagination {
   position: relative;
-  margin-top: 0.35rem;
+  margin-top: 6px;
 }
 .reviews .swiper-pagination-bullet {
   background: rgba(120, 113, 108, 0.35);
   opacity: 1;
 }
 .reviews .swiper-pagination-bullet-active {
-  background: linear-gradient(to right, #f6d365, #fda085);
+  background: #f3ad76;
+}
+
+/* ==========================
+デスクトップ用
+========================== */
+@media screen and (min-width: 1024px) {
+  .reviews__card {
+    min-height: 356px;
+    padding: 28px;
+  }
+  .reviews__quote {
+    font-size: 17px;
+  }
+  .reviews__person {
+    font-size: 17px;
+  }
+}
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .reviews__title {
+    font-size: 30px;
+  }
+  .reviews__description {
+    margin-bottom: 22px;
+    font-size: 15px;
+  }
+  .reviews__swiper {
+    padding-bottom: 30px;
+  }
+  .reviews__card {
+    gap: 12px;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .reviews__quote {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+  .reviews__meta {
+    font-size: 13px;
+  }
+  .reviews__cta-link {
+    width: 100%;
+    max-width: 320px;
+    min-width: 0;
+    min-height: 48px;
+    font-size: 15px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

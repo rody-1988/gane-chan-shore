@@ -1,31 +1,77 @@
 @use "../foundation/variables" as *;
 
+/* ==========================
+コンセプトセクション
+========================== */
 .concept {
+  width: 100%;
+
+  &__title {
+    margin-bottom: 34px;
+  }
+
+  /* 本文テキスト */
   &__description {
-    font-size: 1rem;
-    line-height: 1.75;
+    margin: 0 0 10px;
+    font-size: 18px;
+    line-height: 1.9;
     color: $color-stone-500;
     text-align: center;
-    margin-bottom: 2rem;
     font-weight: 600;
+    letter-spacing: 0.02em;
 
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    /* おみくじリンク */
     &-link {
       color: rgb(255, 93, 93);
-      font-size: 1.5rem;
+      font-size: 28px;
+      line-height: 1.3;
+      font-weight: 700;
       text-decoration-line: underline;
-      &:hover {
-        color: rgba(255, 93, 236, 0.7);
-        transition: all 0.3s ease;
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          color: rgba(255, 93, 236, 0.7);
+          transition: color 0.3s ease;
+        }
       }
     }
+
+    /* WEB×占いの強調テキスト */
     &-span {
       display: inline-block;
-      margin: 1rem 0;
-      font-size: 1.5rem;
+      margin: 14px 0 8px;
+      font-size: 28px;
+      line-height: 1.4;
       color: rgb(128, 182, 240);
       text-decoration-line: underline;
       font-weight: 700;
       letter-spacing: 0.1em;
+    }
+  }
+}
+
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .concept {
+    &__title {
+      margin-bottom: 26px;
+    }
+
+    &__description {
+      margin-bottom: 8px;
+      font-size: 16px;
+      line-height: 1.85;
+
+      &-link,
+      &-span {
+        font-size: 24px;
+      }
     }
   }
 }

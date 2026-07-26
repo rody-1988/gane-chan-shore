@@ -1,62 +1,107 @@
 @use "../foundation/variables" as v;
 
+/* ==========================
+フッター全体
+========================== */
 .page__footer {
-  // margin-top: 4rem;
-  padding: 2rem 1.5rem;
+  width: 100%;
+  padding: 20px 0 0;
   text-align: center;
 
-  // リンク集のレイアウト
+  /* フッターリンク一覧 */
   &-links {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); // スマホで2列
-    gap: 1rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 32px;
+    padding: 0;
 
     li a {
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px; // 押しやすい高さ
+      min-height: 46px;
+      padding: 0 10px;
       font-size: 13px;
+      line-height: 1.4;
+      text-decoration: none;
       color: v.$color-stone-500;
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 12px;
-      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.46);
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      border-radius: 14px;
+      transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.8);
-        color: v.$color-gane-dark;
+      &:focus-visible {
+        outline: 2px solid rgba(74, 66, 63, 0.35);
+        outline-offset: 2px;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background: rgba(255, 255, 255, 0.82);
+          color: v.$color-gane-dark;
+          transform: translateY(-1px);
+        }
+      }
+
+      &:active {
+        transform: translateY(1px);
       }
     }
   }
 
-  // 公式LINE（下の真ん中）
+  /* 公式LINEエリア */
   &-line {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 3rem;
+    gap: 12px;
+    margin-bottom: 30px;
 
     &-text {
+      margin: 0;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 700;
+      line-height: 1.6;
       color: v.$color-stone-500;
     }
 
     &-link img {
-      width: 138px; // 公式推奨のボタンサイズ感
+      width: 138px;
       height: auto;
-      transition: opacity 0.3s;
+      transition:
+        opacity 0.3s,
+        transform 0.3s;
 
-      &:hover {
-        opacity: 0.8;
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          opacity: 0.85;
+          transform: translateY(-1px);
+        }
       }
     }
   }
 
   &-copyright {
-    font-size: 10px;
+    font-size: 11px;
+    line-height: 1.6;
     color: v.$color-stone-400;
+  }
+}
+
+/* ==========================
+デスクトップ用
+========================== */
+@media screen and (min-width: 768px) {
+  .page__footer {
+    padding-top: 26px;
+
+    &-links {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
   }
 }

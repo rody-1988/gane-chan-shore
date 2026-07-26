@@ -1,10 +1,14 @@
 @use "../foundation/variables" as *;
 
+/* ==========================
+おみくじカード全体
+========================== */
 .omikuji-card {
-  /* components/_glass.scss で定義した glass-card を継承 */
   width: 100%;
-  border-radius: 1.5rem;
-  padding: 2.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+  border-radius: 24px;
+  padding: 40px 36px;
   text-align: center;
   box-shadow: $shadow-card;
   transition:
@@ -25,8 +29,8 @@
     position: relative;
     z-index: 10;
     margin: 0;
-    font-size: 0.75rem;
-    line-height: 1rem;
+    font-size: 12px;
+    line-height: 1.4;
     font-weight: 700;
     letter-spacing: 0.1em;
     color: $color-stone-400;
@@ -35,9 +39,9 @@
   &__title {
     position: relative;
     z-index: 10;
-    margin: 1rem 0 0;
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+    margin: 16px 0 0;
+    font-size: 44px;
+    line-height: 1.2;
     font-weight: 900;
     letter-spacing: -0.05em;
     color: transparent;
@@ -49,66 +53,139 @@
   &__message {
     position: relative;
     z-index: 10;
-    margin: 2rem 0 0;
-    font-size: 1rem;
-    line-height: 1.625;
+    margin: 28px 0 0;
+    font-size: 18px;
+    line-height: 1.7;
     font-weight: 500;
     color: $color-gane-dark;
-    white-space: pre-line; // これを追加！「改行や空白をそのまま表示して」という命令
+    white-space: pre-line;
   }
 
+  /* 結果の詳細（カラー・ナンバー・シェア） */
   &__details {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.3); // メッセージとの区切り線
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.3);
     display: none;
+    font-size: 16px;
+    line-height: 1.7;
 
     .result-meta {
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
+      margin-bottom: 14px;
+      font-size: 16px;
     }
+
     .color-dot {
       display: inline-block;
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      margin-right: 5px;
+      margin-right: 6px;
     }
   }
 
+  /* シェアエリア */
   .share-area {
     display: none;
+
     .share-label {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-top: 0.8rem;
-      margin: 20px 0;
+      margin: 18px 0 16px;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
       opacity: 0.8;
     }
 
     .share-btns-container {
-      display: flex; // これで横並びになります
-      justify-content: center; // 真ん中寄せ
-      gap: 12px; // ボタン同士の隙間
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .share-btn {
-      flex: 1; // ボタンの幅を均等にする
-      max-width: 100px; // 広がりすぎないように制限
-      padding: 8px 0;
-      border-radius: 50px; // 丸いボタン
+      flex: 1 1 110px;
+      min-height: 40px;
+      max-width: 120px;
+      padding: 8px 12px;
+      border-radius: 50px;
       border: 1px solid rgba(202, 178, 178, 0.8);
       background: rgb(21 178 223 / 20%);
-      margin-top: 1rem;
+      margin-top: 0;
 
-      color: black;
-      font-size: 0.8rem;
+      color: #202020;
+      font-size: 13px;
+      line-height: 1.3;
+      font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s;
+      transition:
+        background 0.3s ease,
+        transform 0.3s ease;
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-2px); // 浮き上がる演出
+      &:focus-visible {
+        outline: 2px solid rgba(74, 66, 63, 0.4);
+        outline-offset: 2px;
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background: rgba(255, 255, 255, 0.28);
+          transform: translateY(-2px);
+        }
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+  }
+}
+
+/* ==========================
+ヒーローのボタン配置
+========================== */
+.omikuji-hero__btn {
+  margin: 0 auto;
+}
+
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .omikuji-card {
+    border-radius: 20px;
+    padding: 28px 20px;
+
+    &__title {
+      margin-top: 14px;
+      font-size: 34px;
+    }
+
+    &__message {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    &__details {
+      margin-top: 20px;
+      padding-top: 14px;
+      font-size: 15px;
+
+      .result-meta {
+        font-size: 15px;
+      }
+    }
+
+    .share-area {
+      .share-label {
+        margin: 14px 0 12px;
+        font-size: 16px;
+      }
+
+      .share-btn {
+        min-height: 38px;
+        font-size: 12px;
       }
     }
   }

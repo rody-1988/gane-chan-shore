@@ -1,16 +1,34 @@
 @use "../foundation/variables" as v;
 
+/* ==========================
+共通セクション
+========================== */
 .section {
   width: 100%;
-  padding: 2rem 0; // 上下の余白を統一
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem; // セクション内の要素（カードとボタンなど）の間隔
+  gap: 36px;
 }
 
-// おみくじヒーローは .section のルールを継承しつつ、さらに広めに
+/* ==========================
+おみくじヒーロー
+========================== */
 .omikuji-hero {
   @extend .section;
-  padding: 3rem 0;
+  gap: 32px;
+}
+
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .section {
+    gap: 28px;
+  }
+
+  .omikuji-hero {
+    gap: 24px;
+  }
 }

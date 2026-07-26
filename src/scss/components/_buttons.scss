@@ -1,27 +1,53 @@
 @use "../foundation/variables" as *;
 
+/* ==========================
+メインアクションボタン
+========================== */
 .btn-draw {
   width: 100%;
-  max-width: 20rem;
+  max-width: 320px;
+  min-height: 54px;
   border: none;
   border-radius: 9999px;
-  padding: 1rem 1.5rem;
+  padding: 14px 24px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 18px;
+  line-height: 1.2;
   font-weight: 700;
+  letter-spacing: 0.04em;
   color: #fff;
   background: $gradient-button;
   box-shadow: $shadow-button;
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 
-  &:hover {
-    box-shadow: $shadow-button-hover;
-    transform: scale(1.05);
+  &:focus-visible {
+    outline: 2px solid rgba(74, 66, 63, 0.45);
+    outline-offset: 3px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      box-shadow: $shadow-button-hover;
+      transform: translateY(-2px);
+    }
   }
 
   &:active {
-    transform: scale(0.95);
+    transform: translateY(1px);
+    box-shadow: $shadow-button;
+  }
+}
+
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .btn-draw {
+    max-width: 100%;
+    min-height: 52px;
+    padding: 14px 20px;
+    font-size: 17px;
   }
 }

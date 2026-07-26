@@ -1,31 +1,61 @@
 @use "../foundation/variables" as *;
 
+/* ==========================
+ヘッダー全体
+========================== */
 .page__header {
-  margin-bottom: 3rem;
+  margin-bottom: 52px;
   text-align: center;
 
   &-emoji {
     display: inline-block;
-    margin-bottom: 1rem;
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+    margin-bottom: 14px;
+    font-size: 40px;
+    line-height: 1;
   }
 }
 
+/* メインタイトル */
 .page__title {
   margin: 0;
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 34px;
+  line-height: 1.35;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: $color-gane-dark;
 }
 
+/* サブタイトル */
 .page__subtitle {
-  margin: 0.5rem 0 0;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  letter-spacing: 0.1em;
+  margin: 10px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
   color: $color-stone-500;
   text-transform: uppercase;
+}
+
+/* ==========================
+スマートフォン用
+========================== */
+@media screen and (max-width: 767px) {
+  .page__header {
+    margin-bottom: 40px;
+
+    &-emoji {
+      margin-bottom: 12px;
+      font-size: 34px;
+    }
+  }
+
+  .page__title {
+    font-size: 28px;
+    line-height: 1.35;
+    letter-spacing: 0.06em;
+  }
+
+  .page__subtitle {
+    margin-top: 8px;
+    font-size: 12px;
+  }
 }
