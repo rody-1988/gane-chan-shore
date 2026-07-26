@@ -1,0 +1,16 @@
+@use "../foundation/variables" as v;
+
+.section {
+  width: 100%;
+  padding: 2rem 0; // 上下の余白を統一
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem; // セクション内の要素（カードとボタンなど）の間隔
+}
+
+// おみくじヒーローは .section のルールを継承しつつ、さらに広めに
+.omikuji-hero {
+  @extend .section;
+  padding: 3rem 0;
+}

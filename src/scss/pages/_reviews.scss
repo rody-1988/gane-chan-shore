@@ -1,0 +1,172 @@
+@use "../foundation/variables" as *;
+
+.reviews {
+  width: 100%;
+  padding: 2.5rem 0 3rem;
+
+  .container {
+    width: min(100%, 1200px);
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  &__title {
+    padding-top: 0;
+    margin-bottom: 0.75rem;
+    border-top: none;
+    text-shadow: none;
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    color: $color-gane-dark;
+  }
+
+  &__description {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: $color-stone-500;
+  }
+
+  &__swiper {
+    width: 100%;
+    padding-bottom: 2.2rem;
+  }
+
+  &__wrapper {
+    align-items: stretch;
+  }
+
+  &__slide {
+    height: auto;
+  }
+
+  &__card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding: 1.4rem;
+    border-radius: 1.25rem;
+    box-shadow: $shadow-card;
+    background: rgba(255, 255, 255, 0.78);
+  }
+
+  @media (min-width: 1024px) {
+    &__card {
+      padding: 1.7rem 1.8rem;
+      border-radius: 1.5rem;
+    }
+
+    &__quote {
+      font-size: 1rem;
+    }
+
+    &__person {
+      font-size: 1rem;
+    }
+  }
+
+  &__rating {
+    margin: 0;
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+    color: #f59e0b;
+  }
+
+  &__category {
+    display: inline-block;
+    width: fit-content;
+    margin: 0;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba($color-stone-500, 0.12);
+    color: $color-stone-500;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  &__quote {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: $color-gane-dark;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    flex: 1 1 auto;
+  }
+
+  &__person-block {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__person {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: $color-gane-dark;
+  }
+
+  &__meta {
+    margin: 0;
+    font-size: 0.85rem;
+    color: $color-stone-500;
+  }
+
+  &__cta {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  &__cta-text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: $color-stone-500;
+  }
+
+  &__cta-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 12rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    background: $gradient-button;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: $shadow-card;
+  }
+
+  &__status,
+  &__empty {
+    text-align: center;
+    font-size: 0.92rem;
+    color: $color-stone-500;
+  }
+
+  .swiper-pagination {
+    position: relative;
+    margin-top: 0.35rem;
+  }
+
+  .swiper-pagination-bullet {
+    background: rgba($color-stone-500, 0.35);
+    opacity: 1;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: $gradient-button;
+  }
+}
