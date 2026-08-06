@@ -118,4 +118,65 @@
       card.style.transform = "scale(1)";
     }, 150);
   });
+
+  const backTopBtn = document.getElementById("back-to-top");
+  const omikujiSection = document.getElementById("omikuji-main");
+  const jumpLinks = Array.from(document.querySelectorAll(".page__jump-nav a"));
+  const trackedSections = jumpLinks
+    .map((link) => {
+      const targetId = link.getAttribute("href")?.replace("#", "");
+      if (!targetId) return null;
+      const section = document.getElementById(targetId);
+      if (!section) return null;
+      return { link, section };
+    })
+    .filter((item) => item !== null);
+
+  const updateActiveJumpLink = () => {
+    if (trackedSections.length === 0) return;
+
+    const currentLine = window.scrollY + 140;
+    let active = trackedSections[0];
+
+    for (const item of trackedSections) {
+      if (item.section.offsetTop <= currentLine) {
+        active = item;
+      }
+    }
+
+    for (const item of trackedSections) {
+      item.link.classList.remove("is-active");
+      item.link.removeAttribute("aria-current");
+    }
+
+    active.link.classList.add("is-active");
+    active.link.setAttribute("aria-current", "location");
+  };
+
+  const toggleBackTop = () => {
+    if (!backTopBtn || !omikujiSection) return;
+
+    const threshold = omikujiSection.offsetTop + omikujiSection.offsetHeight;
+    if (window.scrollY > threshold) {
+      backTopBtn.classList.add("is-visible");
+      return;
+    }
+    backTopBtn.classList.remove("is-visible");
+  };
+
+  const onScroll = () => {
+    toggleBackTop();
+    updateActiveJumpLink();
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+
+  if (backTopBtn) {
+    backTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  onScroll();
 })();
