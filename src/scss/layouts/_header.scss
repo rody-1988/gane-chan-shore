@@ -4,6 +4,7 @@
 ヘッダー全体
 ========================== */
 .page__header {
+  padding-top: var(--jump-nav-offset);
   margin-bottom: 44px;
   text-align: center;
 
@@ -33,14 +34,15 @@
   letter-spacing: 0.12em;
   color: $color-stone-500;
   text-transform: uppercase;
+  font-family: "Lora", "Times New Roman", serif;
 }
 
 /* ファーストビュー補助コピー */
 .page__lead {
   margin: 14px auto 0;
   max-width: 640px;
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: 17px;
+  line-height: 1.85;
   font-weight: 600;
   color: $color-gane-dark;
 }
@@ -73,20 +75,22 @@
 }
 
 .page__jump-nav {
-  position: sticky;
-  top: 8px;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 20;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  width: 100%;
-  margin: 0 auto 34px;
+  width: min(calc(100% - 32px), $layout-section-max-width);
+  margin: 0 auto;
   padding: 10px;
   border-radius: 999px;
-  background: rgb(255 255 255 / 0.58);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgb(255 255 255 / 0.78);
+  background: rgb(255 255 255 / 0.42);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 255 255 / 0.6);
 
   a {
     display: inline-flex;
@@ -100,8 +104,8 @@
     line-height: 1;
     font-weight: 700;
     letter-spacing: 0.04em;
-    background: rgb(255 255 255 / 0.72);
-    border: 1px solid rgb(255 255 255 / 0.88);
+    background: rgb(255 255 255 / 0.62);
+    border: 1px solid rgb(255 255 255 / 0.76);
     transition:
       transform 0.2s ease,
       background 0.2s ease,
@@ -194,6 +198,7 @@
 ========================== */
 @media screen and (max-width: 767px) {
   .page__header {
+    padding-top: var(--jump-nav-offset);
     margin-bottom: 34px;
 
     &-emoji {
@@ -215,14 +220,14 @@
 
   .page__lead {
     margin-top: 12px;
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 15px;
+    line-height: 1.8;
   }
 
   .page__jump-nav {
-    top: 6px;
+    top: 8px;
     gap: 8px;
-    margin-bottom: 26px;
+    width: min(calc(100% - 24px), $layout-section-max-width);
     padding: 8px;
     border-radius: 18px;
 
@@ -243,6 +248,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .page__jump-nav a.is-active,
+  .page__jump-nav a[aria-current="location"] {
+    animation: none;
+  }
+
   .back-top img {
     animation: none;
     transform: none;

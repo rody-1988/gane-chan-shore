@@ -1,7 +1,7 @@
 // 色・グラデ・影（ここを変えると全体に効く）
-$color-gane-dark: #4a423f;
-$color-stone-400: #a8a29e;
-$color-stone-500: #78716c;
+$color-gane-dark: #3a322e;
+$color-stone-400: #aa8868;
+$color-stone-500: #5f5550;
 
 /* ==========================
 レイアウト共通値
@@ -16,9 +16,9 @@ $space-page-padding-bottom: 36px;
 $space-section-gap-pc: 72px;
 $space-section-gap-sp: 56px;
 
-$gradient-page: linear-gradient(to bottom right, #fdfcfb, #e2d1c3, #f5f7fa);
-$gradient-title: linear-gradient(to right, #fb923c, #ec4899);
-$gradient-button: linear-gradient(to right, #f6d365, #fda085);
+$gradient-page: linear-gradient(145deg, #fff7ef 0%, #ffd9b8 48%, #bfe5ee 100%);
+$gradient-title: linear-gradient(to right, #f79256, #ff6f61);
+$gradient-button: linear-gradient(to right, #ffbf7a, #f38f63);
 
 $shadow-card:
   0 20px 25px -5px rgb(0 0 0 / 0.1),
